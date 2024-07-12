@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _SignUpState extends State<SignUp> {
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +50,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
 
-            const SizedBox(
-              height: 20,
-            ),
+            Spacer(),
 
             Center(
                 child: Padding(padding: const EdgeInsets.all(10),
@@ -59,16 +58,42 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Reset Password',
+                          'Welcome',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
                         ),
-                        // white spacing
+
+
+                        // White spacing
                         const SizedBox(
                           height: 10,
                         ),
+
+                        Padding(padding: const EdgeInsets.all(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: const Icon(Icons.person),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelText: "Full name",
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 12,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // White spacing
+                        const SizedBox(
+                          height: 10,
+                        ),
+
                         Padding(padding: const EdgeInsets.all(10),
                           child: TextField(
                             decoration: InputDecoration(
@@ -91,6 +116,117 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           width: 10,
                         ),
 
+                        Padding(padding: const EdgeInsets.all(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: const Icon(Icons.phone),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelText: "Phone Number",
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 12,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // White spacing
+                        const SizedBox(
+                          height: 10,
+                        ),
+
+
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelText: "Password",
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 12,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelText: "Confirm Password",
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 12,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const Text(
+                              'Already have an account?'
+                            ),
+
+                            const SizedBox(
+                              width: 10,
+                            ),
+
+                            TextButton(
+                              onPressed: (){
+                                Navigator.push(
+                                    context, (MaterialPageRoute(builder: (context) => const SignUp())
+                                ));
+                              },
+                              child: const Text(
+                                  "Log in"
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
 
                         Padding(
                           padding: const EdgeInsets.all(10),
@@ -108,7 +244,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
                               ),
                               child: const Text(
-                                "Submit",
+                                "Login",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
@@ -190,4 +326,3 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 }
-
