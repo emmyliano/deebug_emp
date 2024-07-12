@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const SignIn(title: 'Flutter Demo Home Page'),
+      home: SignIn(),
     );
   }
 }
