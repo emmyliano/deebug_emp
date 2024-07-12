@@ -58,7 +58,7 @@ class _SignUpState extends State<SignUp> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Welcome',
+                          'Register',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
