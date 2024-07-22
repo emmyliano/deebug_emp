@@ -1,3 +1,4 @@
+import 'package:deebup_emp/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -148,6 +149,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: TextField(
+                                obscureText: _obscureText,
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
@@ -209,21 +211,17 @@ class _SignUpState extends State<SignUp> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Text(
-                                    'Already have an account?'
-                                ),
-
-                                const SizedBox(
-                                  width: 10,
+                                    'Already have an account? '
                                 ),
 
                                 TextButton(
                                   onPressed: (){
                                     Navigator.push(
-                                        context, (MaterialPageRoute(builder: (context) => const SignUp())
+                                        context, (MaterialPageRoute(builder: (context) => const SignIn())
                                     ));
                                   },
                                   child: const Text(
-                                      "Log in"
+                                      "Login"
                                   ),
                                 ),
                               ],

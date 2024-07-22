@@ -1,4 +1,5 @@
 import 'package:deebup_emp/forgot_password.dart';
+import 'package:deebup_emp/register.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -9,7 +10,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  bool _obscureText = true; // this variable is used in the password TextField for visibility on/off
+  bool _obscureText = false; // this variable is used in the password TextField for visibility on/off
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +100,7 @@ class _SignInState extends State<SignIn> {
 
                           Padding(padding: const EdgeInsets.all(10),
                             child: TextField(
+                              obscureText: _obscureText,
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   onPressed: () {
@@ -168,6 +170,30 @@ class _SignInState extends State<SignIn> {
                                 ),
                               ),
                             ),
+                          ),
+
+                          const SizedBox(
+                            height: 10,
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                  "Don't have an account? "
+                              ),
+
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.push(
+                                      context, (MaterialPageRoute(builder: (context) => const SignUp())
+                                  ));
+                                },
+                                child: const Text(
+                                    "Register"
+                                ),
+                              ),
+                            ],
                           ),
 
                           const SizedBox(
