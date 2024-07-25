@@ -21,7 +21,7 @@ class _SignInState extends State<SignIn> {
             children: [
 
               SizedBox(
-                height: 250,
+                height: 200,
                 child: Stack(
                   children: [
                     //First Circle
@@ -232,7 +232,7 @@ class _SignInState extends State<SignIn> {
                           const Text(
                             "or",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

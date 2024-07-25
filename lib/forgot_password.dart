@@ -17,7 +17,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
 
                 SizedBox(
-                height: 250,
+                height: 200,
                 child: Stack(
                   children: [
                     //First Circle

@@ -19,7 +19,7 @@ class _SignUpState extends State<SignUp> {
               children: [
 
                 SizedBox(
-                height: 250,
+                height: 200,
                 child: Stack(
                   children: [
                     //First Circle
@@ -333,7 +333,7 @@ class _SignUpState extends State<SignUp> {
                             const Text(
                               "or",
                               style: TextStyle(
-                                fontSize: 32,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
