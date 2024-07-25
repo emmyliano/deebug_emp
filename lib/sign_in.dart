@@ -57,7 +57,7 @@ class _SignInState extends State<SignIn> {
 
               Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(50),
+                    padding: const EdgeInsets.all(35),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -85,7 +85,7 @@ class _SignInState extends State<SignIn> {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: Material(
-                              elevation: 5.0,
+                              elevation: 10,
                               shadowColor: Colors.grey.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(10.0),
                               child: TextField(
@@ -117,7 +117,7 @@ class _SignInState extends State<SignIn> {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: Material(
-                              elevation: 5.0,
+                              elevation: 10,
                               borderRadius: BorderRadius.circular(10.0),
                               shadowColor: Colors.grey.withOpacity(0.5),
                               child: TextField(

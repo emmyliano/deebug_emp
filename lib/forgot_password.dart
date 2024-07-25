@@ -53,7 +53,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                 Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(50),
+                      padding: const EdgeInsets.all(35),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -81,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10.0,
                                 shadowColor: Colors.grey.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(

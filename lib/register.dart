@@ -54,7 +54,8 @@ class _SignUpState extends State<SignUp> {
               ),
 
                 Center(
-                    child: Padding(padding: const EdgeInsets.all(50),
+                    child: Padding(
+                      padding: const EdgeInsets.all(35),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -82,7 +83,7 @@ class _SignUpState extends State<SignUp> {
 
                             Padding(padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
@@ -118,7 +119,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(1.0),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
@@ -154,7 +155,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
@@ -192,7 +193,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
@@ -237,7 +238,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Material(
-                                elevation: 5.0,
+                                elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
