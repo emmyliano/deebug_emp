@@ -21,7 +21,7 @@ class _SignInState extends State<SignIn> {
             children: [
 
               SizedBox(
-                height: 300,
+                height: 250,
                 child: Stack(
                   children: [
                     //First Circle
@@ -29,8 +29,8 @@ class _SignInState extends State<SignIn> {
                       top: -70,
                       left: -70,
                       child: Container(
-                        width: 300,
-                        height: 300,
+                        width: 250,
+                        height: 250,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.grey.shade900,
@@ -43,8 +43,8 @@ class _SignInState extends State<SignIn> {
                       top: -50,
                       left: -50,
                       child: Container(
-                        width: 250,
-                        height: 250,
+                        width: 170,
+                        height: 170,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.grey.shade800,
@@ -55,72 +55,101 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
 
-              const SizedBox(
-                height: 10,
-              ),
-
-
               Center(
-                  child: Padding(padding: const EdgeInsets.all(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(50),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            'Welcome',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                          const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Welcome',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
+
                           // white spacing
                           const SizedBox(
                             height: 10,
                           ),
-                          Padding(padding: const EdgeInsets.all(10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                suffixIcon: const Icon(Icons.email_outlined),
-                                labelStyle: const TextStyle(
-                                  color: Colors.black,
-                                ),
-                                labelText: "Email address",
-                                border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    width: 12,
+
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Material(
+                              elevation: 5.0,
+                              shadowColor: Colors.grey.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: TextField(
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      borderSide: const BorderSide(
+                                        color: Colors.grey,
+                                        width: 2.0,
+                                      )
+                                    ),
+                                  suffixIcon: const Icon(Icons.email_outlined),
+                                  labelStyle: const TextStyle(
+                                    color: Colors.black,
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
+                                  labelText: "Email address",
+                                  border: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      width: 12,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
 
-                          const SizedBox(
-                            width: 10,
-                          ),
-
-                          Padding(padding: const EdgeInsets.all(10),
-                            child: TextField(
-                              obscureText: _obscureText,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _obscureText = !_obscureText;
-                                    });
-                                  },
-                                  icon: Icon(_obscureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off),
-                                ),
-                                labelStyle: const TextStyle(
-                                  color: Colors.black,
-                                ),
-                                labelText: "Password",
-                                border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    width: 12,
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Material(
+                              elevation: 5.0,
+                              borderRadius: BorderRadius.circular(10.0),
+                              shadowColor: Colors.grey.withOpacity(0.5),
+                              child: TextField(
+                                obscureText: _obscureText,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      borderSide: const BorderSide(
+                                        color: Colors.grey,
+                                        width: 2.0,
+                                      )
+                                    ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _obscureText = !_obscureText;
+                                      });
+                                    },
+                                    icon: Icon(_obscureText
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
+                                  labelStyle: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      width: 12,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                               ),
                             ),
@@ -142,7 +171,7 @@ class _SignInState extends State<SignIn> {
                           ),
 
                           const SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
 
                           Padding(
@@ -180,7 +209,7 @@ class _SignInState extends State<SignIn> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                  "Don't have an account? "
+                                  "Don't have an account?"
                               ),
 
                               TextButton(
@@ -203,7 +232,7 @@ class _SignInState extends State<SignIn> {
                           const Text(
                             "or",
                             style: TextStyle(
-                              fontSize: 32,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
