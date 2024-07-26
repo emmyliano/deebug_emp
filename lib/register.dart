@@ -55,7 +55,7 @@ class _SignUpState extends State<SignUp> {
 
                 Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(35),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
