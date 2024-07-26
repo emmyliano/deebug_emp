@@ -19,13 +19,13 @@ class _SignUpState extends State<SignUp> {
               children: [
 
                 SizedBox(
-                  height: 220,
+                  height: 210,
                   child: Stack(
                     children: [
                       //First Circle
                       Positioned(
-                        top: -150,
-                        left: -160,
+                        top: -170,
+                        left: -170,
                         child: Container(
                           width: 570,
                           height: 350,
@@ -55,7 +55,7 @@ class _SignUpState extends State<SignUp> {
 
                 Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(25),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -85,14 +85,16 @@ class _SignUpState extends State<SignUp> {
                               child: Material(
                                 elevation: 10,
                                 shadowColor: Colors.black,
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: TextField(
                                   keyboardType: TextInputType.multiline,
                                   decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -106,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                                       borderSide: const BorderSide(
                                         width: 12,
                                       ),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
                                 ),
@@ -123,14 +125,16 @@ class _SignUpState extends State<SignUp> {
                               child: Material(
                                 elevation: 10,
                                 shadowColor: Colors.black,
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: TextField(
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -144,7 +148,7 @@ class _SignUpState extends State<SignUp> {
                                       borderSide: const BorderSide(
                                         width: 12,
                                       ),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
                                 ),
@@ -160,14 +164,16 @@ class _SignUpState extends State<SignUp> {
                               child: Material(
                                 elevation: 10,
                                 shadowColor: Colors.black,
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: TextField(
                                   keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -181,7 +187,7 @@ class _SignUpState extends State<SignUp> {
                                       borderSide: const BorderSide(
                                         width: 12,
                                       ),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
                                 ),
@@ -199,14 +205,16 @@ class _SignUpState extends State<SignUp> {
                               child: Material(
                                 elevation: 10,
                                 shadowColor: Colors.black,
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: TextField(
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -229,7 +237,7 @@ class _SignUpState extends State<SignUp> {
                                       borderSide: const BorderSide(
                                         width: 12,
                                       ),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
                                 ),
@@ -245,14 +253,16 @@ class _SignUpState extends State<SignUp> {
                               child: Material(
                                 elevation: 10,
                                 shadowColor: Colors.black,
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(12.0),
                                 child: TextField(
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -275,7 +285,7 @@ class _SignUpState extends State<SignUp> {
                                       borderSide: const BorderSide(
                                         width: 12,
                                       ),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
                                 ),
@@ -319,7 +329,7 @@ class _SignUpState extends State<SignUp> {
                                   style: ButtonStyle(
                                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(10)
+                                              borderRadius: BorderRadius.circular(12)
                                           )
                                       ),
                                       backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(

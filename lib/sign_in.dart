@@ -15,19 +15,20 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      backgroundColor: const Color.fromARGB(255, 253, 253, 253),
+        body: ListView(
         children: [
           Column(
             children: [
 
               SizedBox(
-                height: 220,
+                height: 210,
                 child: Stack(
                   children: [
                     //First Circle
                     Positioned(
-                      top: -150,
-                      left: -160,
+                      top: -170,
+                      left: -170,
                       child: Container(
                         width: 570,
                         height: 350,
@@ -57,7 +58,7 @@ class _SignInState extends State<SignIn> {
 
               Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(25),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -87,14 +88,16 @@ class _SignInState extends State<SignIn> {
                             child: Material(
                               elevation: 10,
                               shadowColor: Colors.black,
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(12.0),
                               child: TextField(
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -108,7 +111,7 @@ class _SignInState extends State<SignIn> {
                                     borderSide: const BorderSide(
                                       width: 12,
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               ),
@@ -119,16 +122,18 @@ class _SignInState extends State<SignIn> {
                             padding: const EdgeInsets.all(10),
                             child: Material(
                               elevation: 10,
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(12.0),
                               shadowColor: Colors.black,
                               child: TextField(
                                 keyboardType: TextInputType.multiline,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
                                       borderSide: const BorderSide(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         width: 2.0,
                                       )
                                     ),
@@ -151,7 +156,7 @@ class _SignInState extends State<SignIn> {
                                     borderSide: const BorderSide(
                                       width: 12,
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               ),
@@ -190,7 +195,7 @@ class _SignInState extends State<SignIn> {
                                 style: ButtonStyle(
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10)
+                                            borderRadius: BorderRadius.circular(12)
                                         )
                                     ),
                                     backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(
