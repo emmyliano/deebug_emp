@@ -21,16 +21,16 @@ class _SignInState extends State<SignIn> {
             children: [
 
               SizedBox(
-                height: 200,
+                height: 220,
                 child: Stack(
                   children: [
                     //First Circle
                     Positioned(
-                      top: -70,
-                      left: -70,
+                      top: -150,
+                      left: -160,
                       child: Container(
-                        width: 250,
-                        height: 250,
+                        width: 570,
+                        height: 350,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.grey.shade900,
@@ -40,11 +40,11 @@ class _SignInState extends State<SignIn> {
 
                     // Second Circle
                     Positioned(
-                      top: -50,
-                      left: -50,
+                      top: -180,
+                      left: -100,
                       child: Container(
-                        width: 170,
-                        height: 170,
+                        width: 400,
+                        height: 300,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.grey.shade800,
@@ -86,7 +86,7 @@ class _SignInState extends State<SignIn> {
                             padding: const EdgeInsets.all(10),
                             child: Material(
                               elevation: 10,
-                              shadowColor: Colors.grey.withOpacity(0.5),
+                              shadowColor: Colors.black,
                               borderRadius: BorderRadius.circular(10.0),
                               child: TextField(
                                 keyboardType: TextInputType.emailAddress,
@@ -101,6 +101,7 @@ class _SignInState extends State<SignIn> {
                                   suffixIcon: const Icon(Icons.email_outlined),
                                   labelStyle: const TextStyle(
                                     color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                   labelText: "Email address",
                                   border: OutlineInputBorder(
@@ -119,8 +120,9 @@ class _SignInState extends State<SignIn> {
                             child: Material(
                               elevation: 10,
                               borderRadius: BorderRadius.circular(10.0),
-                              shadowColor: Colors.grey.withOpacity(0.5),
+                              shadowColor: Colors.black,
                               child: TextField(
+                                keyboardType: TextInputType.multiline,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -142,6 +144,7 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   labelStyle: const TextStyle(
                                     color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                   labelText: "Password",
                                   border: OutlineInputBorder(
@@ -163,8 +166,11 @@ class _SignInState extends State<SignIn> {
                                       context, (MaterialPageRoute(builder: (context) => const ForgotPassword())
                                   ));
                                 },
-                                child: const Text(
-                                    "Forgot Password?"
+                                child: Text(
+                                    "Forgot Password?",
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                  ),
                                 ),
                               ),
                             ],
@@ -187,7 +193,8 @@ class _SignInState extends State<SignIn> {
                                             borderRadius: BorderRadius.circular(10)
                                         )
                                     ),
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+                                    backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(
+                                        255, 87, 92, 209))
                                 ),
                                 child: const Text(
                                   "Login",
@@ -199,10 +206,6 @@ class _SignInState extends State<SignIn> {
                                 ),
                               ),
                             ),
-                          ),
-
-                          const SizedBox(
-                            height: 10,
                           ),
 
                           Row(
@@ -218,8 +221,11 @@ class _SignInState extends State<SignIn> {
                                       context, (MaterialPageRoute(builder: (context) => const SignUp())
                                   ));
                                 },
-                                child: const Text(
-                                    "Register"
+                                child: Text(
+                                    "Register",
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                  ),
                                 ),
                               ),
                             ],

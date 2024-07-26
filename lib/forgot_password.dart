@@ -16,16 +16,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         Column(
           children: [
             SizedBox(
-              height: 200,
+              height: 220,
               child: Stack(
                 children: [
                   //First Circle
                   Positioned(
-                    top: -70,
-                    left: -70,
+                    top: -150,
+                    left: -160,
                     child: Container(
-                      width: 250,
-                      height: 250,
+                      width: 570,
+                      height: 350,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.grey.shade900,
@@ -35,11 +35,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                   // Second Circle
                   Positioned(
-                    top: -50,
-                    left: -50,
+                    top: -180,
+                    left: -100,
                     child: Container(
-                      width: 170,
-                      height: 170,
+                      width: 400,
+                      height: 300,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.grey.shade800,
@@ -80,7 +80,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       padding: const EdgeInsets.all(10),
                       child: Material(
                         elevation: 10.0,
-                        shadowColor: Colors.grey.withOpacity(0.5),
+                        shadowColor: Colors.black,
                         borderRadius: BorderRadius.circular(10.0),
                         child: TextField(
                           keyboardType: TextInputType.emailAddress,
@@ -88,6 +88,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             suffixIcon: const Icon(Icons.email_outlined),
                             labelStyle: const TextStyle(
                               color: Colors.black,
+                              fontWeight: FontWeight.bold,
                             ),
                             labelText: "Email address",
                             focusedBorder: OutlineInputBorder(
@@ -124,7 +125,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.blue)),
+                                  const Color.fromARGB(
+                                      255, 87, 92, 209))),
                           child: const Text(
                             "Submit",
                             style: TextStyle(

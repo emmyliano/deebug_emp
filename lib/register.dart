@@ -19,39 +19,39 @@ class _SignUpState extends State<SignUp> {
               children: [
 
                 SizedBox(
-                height: 200,
-                child: Stack(
-                  children: [
-                    //First Circle
-                    Positioned(
-                      top: -70,
-                      left: -70,
-                      child: Container(
-                        width: 250,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey.shade900,
+                  height: 220,
+                  child: Stack(
+                    children: [
+                      //First Circle
+                      Positioned(
+                        top: -150,
+                        left: -160,
+                        child: Container(
+                          width: 570,
+                          height: 350,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey.shade900,
+                          ),
                         ),
                       ),
-                    ),
 
-                    // Second Circle
-                    Positioned(
-                      top: -50,
-                      left: -50,
-                      child: Container(
-                        width: 170,
-                        height: 170,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey.shade800,
+                      // Second Circle
+                      Positioned(
+                        top: -180,
+                        left: -100,
+                        child: Container(
+                          width: 400,
+                          height: 300,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey.shade800,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
                 Center(
                     child: Padding(
@@ -84,9 +84,10 @@ class _SignUpState extends State<SignUp> {
                             Padding(padding: const EdgeInsets.all(10),
                               child: Material(
                                 elevation: 10,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
+                                  keyboardType: TextInputType.multiline,
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10.0),
@@ -98,6 +99,7 @@ class _SignUpState extends State<SignUp> {
                                     suffixIcon: const Icon(Icons.person),
                                     labelStyle: const TextStyle(
                                       color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                     labelText: "Full name",
                                     border: OutlineInputBorder(
@@ -120,7 +122,7 @@ class _SignUpState extends State<SignUp> {
                               padding: const EdgeInsets.all(10),
                               child: Material(
                                 elevation: 10,
-                                shadowColor: Colors.grey.withOpacity(1.0),
+                                shadowColor: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
                                   keyboardType: TextInputType.emailAddress,
@@ -135,6 +137,7 @@ class _SignUpState extends State<SignUp> {
                                     suffixIcon: const Icon(Icons.email_outlined),
                                     labelStyle: const TextStyle(
                                       color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                     labelText: "Email address",
                                     border: OutlineInputBorder(
@@ -156,7 +159,7 @@ class _SignUpState extends State<SignUp> {
                               padding: const EdgeInsets.all(10),
                               child: Material(
                                 elevation: 10,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
                                   keyboardType: TextInputType.phone,
@@ -171,6 +174,7 @@ class _SignUpState extends State<SignUp> {
                                     suffixIcon: const Icon(Icons.phone),
                                     labelStyle: const TextStyle(
                                       color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                     labelText: "Phone Number",
                                     border: OutlineInputBorder(
@@ -194,7 +198,7 @@ class _SignUpState extends State<SignUp> {
                               padding: const EdgeInsets.all(10),
                               child: Material(
                                 elevation: 10,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
                                   obscureText: _obscureText,
@@ -218,6 +222,7 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                     labelStyle: const TextStyle(
                                       color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                     labelText: "Password",
                                     border: OutlineInputBorder(
@@ -239,7 +244,7 @@ class _SignUpState extends State<SignUp> {
                               padding: const EdgeInsets.all(10),
                               child: Material(
                                 elevation: 10,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: TextField(
                                   obscureText: _obscureText,
@@ -263,6 +268,7 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                     labelStyle: const TextStyle(
                                       color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                     labelText: "Confirm Password",
                                     border: OutlineInputBorder(
@@ -280,7 +286,7 @@ class _SignUpState extends State<SignUp> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Text(
-                                    'Already have an account? '
+                                    'Already have an account?'
                                 ),
 
                                 TextButton(
@@ -289,8 +295,11 @@ class _SignUpState extends State<SignUp> {
                                         context, (MaterialPageRoute(builder: (context) => const SignIn())
                                     ));
                                   },
-                                  child: const Text(
-                                      "Login"
+                                  child: Text(
+                                      "Login",
+                                    style: TextStyle(
+                                      color: Colors.grey.shade800,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -313,10 +322,11 @@ class _SignUpState extends State<SignUp> {
                                               borderRadius: BorderRadius.circular(10)
                                           )
                                       ),
-                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+                                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(
+                                          255, 87, 92, 209))
                                   ),
                                   child: const Text(
-                                    "Login",
+                                    "Submit",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,
