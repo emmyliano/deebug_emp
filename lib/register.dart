@@ -17,7 +17,6 @@ class _SignUpState extends State<SignUp> {
           children: [
             Column(
               children: [
-
                 SizedBox(
                   height: 210,
                   child: Stack(

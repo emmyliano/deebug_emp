@@ -15,12 +15,10 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 253, 253, 253),
         body: ListView(
         children: [
           Column(
             children: [
-
               SizedBox(
                 height: 210,
                 child: Stack(
