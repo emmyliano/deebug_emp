@@ -332,9 +332,11 @@ class _SignUpState extends State<SignUp> {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () {
-                            authService.createAccount(
+                          onPressed: () async {
+                            await authService.createAccount(
+                              _nameController.text,
                                 _emailController.text,
+                                _phoneNumberController.text,
                                 _passwordController.text,
                                 _confirmPasswordController.text);
                           },

@@ -11,8 +11,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  bool _obscureText =
-      false; // this variable is used in the password TextField for visibility on/off
+  bool _obscureText = false; // this variable is used in the password TextField for visibility on/off
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService authService = AuthService();
@@ -196,9 +195,11 @@ class _SignInState extends State<SignIn> {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () {
-                            authService.login(_emailController.text,
-                                _passwordController.text);
+                          onPressed: () async {
+                            await authService.login(
+                              context, 
+                              _emailController.text,
+                              _passwordController.text);
                           },
                           style: ButtonStyle(
                               shape: MaterialStateProperty.all<
@@ -262,10 +263,7 @@ class _SignInState extends State<SignIn> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
-                            onPressed: () {
-                              authService.login(_emailController.text,
-                                  _passwordController.text);
-                            },
+                            onPressed: () {},
                             style: ButtonStyle(
                               elevation: MaterialStateProperty.all(5),
                               backgroundColor: MaterialStateProperty.all<Color>(

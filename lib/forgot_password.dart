@@ -125,8 +125,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () {
-                            authService.forgotPassword(_emailController.text);
+                          onPressed: () async {
+                            await authService.forgotPassword(_emailController.text);
                           },
                           style: ButtonStyle(
                               shape: MaterialStateProperty.all<
