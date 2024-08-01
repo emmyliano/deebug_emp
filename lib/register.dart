@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:deebup_emp/apis/api_requests.dart';
+import 'package:deebup_emp/apis/config.dart';
 import 'package:deebup_emp/sign_in.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -12,15 +14,47 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _obscureText = true;
+  bool _isNotValidate = false;
 
   final AuthService authService = AuthService();
 
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+
+  void registerUser() async {
+  if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+    var regBody = {
+      "email": emailController.text,
+      "password": passwordController.text,
+    };
+
+    try {
+      var response = await http.post(
+        Uri.parse(url),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(regBody),
+      );
+
+      if (response.statusCode == 200) {
+        // Success logic
+        print('User registered successfully');
+      } else {
+        // Error handling
+        print('Error: ${response.body}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  } else {
+    setState(() {
+      _isNotValidate = true;
+    });
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +171,7 @@ class _SignUpState extends State<SignUp> {
                         shadowColor: Colors.black,
                         borderRadius: BorderRadius.circular(12.0),
                         child: TextField(
-                          controller: _emailController,
+                          controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             filled: true,
@@ -216,7 +250,7 @@ class _SignUpState extends State<SignUp> {
                         shadowColor: Colors.black,
                         borderRadius: BorderRadius.circular(12.0),
                         child: TextField(
-                          controller: _passwordController,
+                          controller: passwordController,
                           obscureText: _obscureText,
                           decoration: InputDecoration(
                             filled: true,
@@ -332,13 +366,8 @@ class _SignUpState extends State<SignUp> {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () async {
-                            await authService.createAccount(
-                              _nameController.text,
-                                _emailController.text,
-                                _phoneNumberController.text,
-                                _passwordController.text,
-                                _confirmPasswordController.text);
+                          onPressed: () {
+                            registerUser();
                           },
                           style: ButtonStyle(
                               shape: MaterialStateProperty.all<
