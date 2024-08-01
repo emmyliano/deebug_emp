@@ -7,20 +7,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  runApp(MyApp(token: prefs.getString("token"),));
+  runApp(MyApp(token: prefs.getString("token")));
 }
 
 class MyApp extends StatelessWidget {
-  final token;
+  final String? token; // Allow token to be nullable
   const MyApp({required this.token, super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool isTokenValid = token != null && !JwtDecoder.isExpired(token!);
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Deebug Emp',
-      home: (JwtDecoder.isExpired(token) == false)?Dashboard(token: token):const SignIn(),
+      home: isTokenValid ? Dashboard(token: token!) : const SignIn(),
     );
   }
 }
