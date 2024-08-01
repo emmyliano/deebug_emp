@@ -3,6 +3,7 @@ import 'package:deebup_emp/apis/api_requests.dart';
 import 'package:deebup_emp/apis/config.dart';
 import 'package:deebup_emp/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class SignUp extends StatefulWidget {
@@ -25,36 +26,63 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  void registerUser() async {
-  if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-    var regBody = {
-      "email": emailController.text,
-      "password": passwordController.text,
-    };
-
-    try {
-      var response = await http.post(
-        Uri.parse(url),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(regBody),
-      );
-
-      if (response.statusCode == 200) {
-        // Success logic
-        print('User registered successfully');
-      } else {
-        // Error handling
-        print('Error: ${response.body}');
-      }
-    } catch (e) {
-      print('Error: $e');
-    }
-  } else {
-    setState(() {
-      _isNotValidate = true;
-    });
+  void pushWhenAuthenticated() {
+    Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const SignIn()));
   }
-}
+
+  void registerUser() async {
+
+    if (!emailController.text.contains('@')) {
+      Fluttertoast.showToast(msg: 'Email must contain @ symbol');
+      return; // Exit the method early
+    }
+
+    // Validate password
+    if (passwordController.text.length < 8) {
+      Fluttertoast.showToast(msg: 'Password must be up to 8 characters');
+      return; // Exit the method early
+    }
+
+    // Validate passwords
+    if (passwordController.text != _confirmPasswordController.text) {
+      Fluttertoast.showToast(msg: 'Passwords do not match');
+      return; // Exit the method early
+    }
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      var regBody = {
+        "email": emailController.text,
+        "password": passwordController.text,
+      };
+
+      try {
+        var response = await http.post(
+          Uri.parse(url),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(regBody),
+        );
+
+        // var jsonResponse = jsonDecode(response.body);
+        // print(jsonResponse['status']);
+
+        if (response.statusCode == 200) {
+          // Success logic
+          Fluttertoast.showToast(msg: 'User registered successfully');
+          pushWhenAuthenticated();
+          Fluttertoast.showToast(msg: 'Login with registration details');
+        } else {
+          // Error handling
+          Fluttertoast.showToast(msg: 'Server error: ${response.statusCode}');
+        }
+      } catch (e) {
+        Fluttertoast.showToast(msg: 'Oops an error occurred $e');
+      }
+    } else {
+      setState(() {
+        _isNotValidate = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
