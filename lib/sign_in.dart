@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'package:deebup_emp/apis/config.dart';
+import 'package:deebup_emp/apis/dashboard.dart';
 import 'package:deebup_emp/forgot_password.dart';
 import 'package:deebup_emp/register.dart';
 import 'package:flutter/material.dart';
-import 'package:deebup_emp/apis/api_requests.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -11,10 +16,44 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  bool _obscureText = false; // this variable is used in the password TextField for visibility on/off
+  bool _obscureText =
+      false; // this variable is used in the password TextField for visibility on/off
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final AuthService authService = AuthService();
+
+  late SharedPreferences prefs;
+
+  void initSharedPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  
+
+  void loginUser() async {
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      var reqBody = {
+        "email": _emailController.text,
+        "password": _passwordController.text,
+      };
+
+      var response = await http.post(
+        Uri.parse(login),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(reqBody),
+      );
+
+      var jsonResponse = jsonDecode(response.body);
+      if (jsonResponse['status']) {
+        var myToken = jsonResponse['token'];
+        prefs.setString('token', myToken);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Dashboard(token: myToken)));
+      } else {
+        Fluttertoast.showToast(msg: 'Oops an error occurred');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -196,10 +235,7 @@ class _SignInState extends State<SignIn> {
                         height: 55,
                         child: ElevatedButton(
                           onPressed: () async {
-                            await authService.login(
-                              context, 
-                              _emailController.text,
-                              _passwordController.text);
+                            loginUser();
                           },
                           style: ButtonStyle(
                               shape: MaterialStateProperty.all<

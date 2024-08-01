@@ -26,7 +26,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  void pushWhenAuthenticated() {
+  void _pushWhenAuthenticated() {
     Navigator.push(
               context, MaterialPageRoute(builder: (context) => const SignIn()));
   }
@@ -68,7 +68,7 @@ class _SignUpState extends State<SignUp> {
         if (response.statusCode == 200) {
           // Success logic
           Fluttertoast.showToast(msg: 'User registered successfully');
-          pushWhenAuthenticated();
+          _pushWhenAuthenticated();
           Fluttertoast.showToast(msg: 'Login with registration details');
         } else {
           // Error handling
