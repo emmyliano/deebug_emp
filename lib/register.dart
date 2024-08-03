@@ -51,7 +51,9 @@ class _SignUpState extends State<SignUp> {
     }
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       var regBody = {
+        "name": _nameController.text,
         "email": emailController.text,
+        "number": _phoneNumberController.text,
         "password": passwordController.text,
       };
 
@@ -62,8 +64,8 @@ class _SignUpState extends State<SignUp> {
           body: jsonEncode(regBody),
         );
 
-        // var jsonResponse = jsonDecode(response.body);
-        // print(jsonResponse['status']);
+        var jsonResponse = jsonDecode(response.body);
+        print(jsonResponse['status']);
 
         if (response.statusCode == 200) {
           // Success logic
@@ -72,10 +74,10 @@ class _SignUpState extends State<SignUp> {
           Fluttertoast.showToast(msg: 'Login with registration details');
         } else {
           // Error handling
-          Fluttertoast.showToast(msg: 'Server error: ${response.statusCode}');
+          print('Server error: ${response.statusCode}');
         }
       } catch (e) {
-        Fluttertoast.showToast(msg: 'Oops an error occurred $e');
+        print('Oops an error occurred: $e');
       }
     } else {
       setState(() {
