@@ -15,7 +15,6 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _obscureText = true;
-  bool _isNotValidate = false;
 
   final AuthService authService = AuthService();
 
@@ -64,8 +63,8 @@ class _SignUpState extends State<SignUp> {
           body: jsonEncode(regBody),
         );
 
-        var jsonResponse = jsonDecode(response.body);
-        print(jsonResponse['status']);
+        // var jsonResponse = jsonDecode(response.body);
+        // print(jsonResponse['status']);
 
         if (response.statusCode == 200) {
           // Success logic
@@ -74,15 +73,11 @@ class _SignUpState extends State<SignUp> {
           Fluttertoast.showToast(msg: 'Login with registration details');
         } else {
           // Error handling
-          print('Server error: ${response.statusCode}');
+          Fluttertoast.showToast(msg: 'Server error: ${response.statusCode}');
         }
       } catch (e) {
-        print('Oops an error occurred: $e');
+        Fluttertoast.showToast(msg: 'Oops an error occurred: $e');
       }
-    } else {
-      setState(() {
-        _isNotValidate = true;
-      });
     }
   }
 

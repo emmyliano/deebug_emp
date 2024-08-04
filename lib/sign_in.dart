@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:deebup_emp/apis/config.dart';
-import 'package:deebup_emp/apis/dashboard.dart';
 import 'package:deebup_emp/forgot_password.dart';
 import 'package:deebup_emp/homepage.dart';
 import 'package:deebup_emp/register.dart';
@@ -32,7 +31,7 @@ class _SignInState extends State<SignIn> {
   _navToHome() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Homepage()),
+      MaterialPageRoute(builder: (context) => const Homepage()),
     );
   }
 
@@ -74,7 +73,7 @@ class _SignInState extends State<SignIn> {
           Fluttertoast.showToast(msg: 'Invalid email or password');
         }
       } catch (e) {
-        print('Oops, an error occurred: $e');
+        Fluttertoast.showToast(msg: 'Oops, an error occurred: $e');
       }
     } else {
       Fluttertoast.showToast(msg: 'Please fill in both fields');
