@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:deebup_emp/apis/config.dart';
 import 'package:deebup_emp/apis/dashboard.dart';
 import 'package:deebup_emp/forgot_password.dart';
+import 'package:deebup_emp/homepage.dart';
 import 'package:deebup_emp/register.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -28,16 +29,25 @@ class _SignInState extends State<SignIn> {
     initSharedPref();
   }
 
+  _navToHome() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Homepage()),
+    );
+  }
+
   Future<void> initSharedPref() async {
     prefs = await SharedPreferences.getInstance();
+    // print("SharedPreferences initialized");
   }
 
   Future<void> loginUser() async {
-    if (_emailController.text.isNotEmpty && _passwordController.text.isNotEmpty) {
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
       try {
         var reqBody = {
-          "email": _emailController.text,
-          "password": _passwordController.text,
+          "email": _emailController.text.trim(),
+          "password": _passwordController.text.trim(),
         };
 
         var response = await http.post(
@@ -46,23 +56,25 @@ class _SignInState extends State<SignIn> {
           body: jsonEncode(reqBody),
         );
 
-        var jsonResponse = jsonDecode(response.body);
-        if (jsonResponse['status']) {
-          var myToken = jsonResponse['token'];
-          if (prefs != null) {
-            await prefs!.setString('token', myToken);
-          }
-          if (mounted) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => Dashboard(token: myToken)),
-            );
-          }
+        // var jsonResponse = jsonDecode(response.body);
+        // print("Response: ${jsonDecode(response.body)}");
+
+        if (response.statusCode == 200) {
+          Fluttertoast.showToast(msg: "Login successful");
+          _navToHome();
+
+          // var myToken = jsonResponse['token'];
+          // if (myToken != null && prefs != null) {
+          //   await prefs!.setString('token', myToken);
+          //
+          // } else {
+          //   Fluttertoast.showToast(msg: 'Token is null or prefs not initialized');
+          // }
         } else {
           Fluttertoast.showToast(msg: 'Invalid email or password');
         }
       } catch (e) {
-        Fluttertoast.showToast(msg: 'Oops, an error occurred: $e');
+        print('Oops, an error occurred: $e');
       }
     } else {
       Fluttertoast.showToast(msg: 'Please fill in both fields');
@@ -250,9 +262,8 @@ class _SignInState extends State<SignIn> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              backgroundColor:
-                                  MaterialStateProperty.all<Color>(
-                                      const Color.fromARGB(255, 87, 92, 209)),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  const Color.fromARGB(255, 87, 92, 209)),
                             ),
                             child: const Text(
                               "Login",

@@ -13,7 +13,8 @@ import 'package:deebup_emp/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    const String mockToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFmZGQ1ZDMwMWE0NjIyNWIzYmMyYjQiLCJpYXQiOjE3MjI4MDk0NTd9.QcCbSgdy4Kx6rqX3mAe-RJQ2t6JazbVLlJIYwJ05hQ4';
+    await tester.pumpWidget(const MyApp(token: mockToken));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -3,7 +3,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 
 class Dashboard extends StatefulWidget {
   final token;
-  const Dashboard({required this.token, super.key});
+  const Dashboard({this.token, super.key});
 
   @override
   State<Dashboard> createState() => _DashboardState();
