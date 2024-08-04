@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'package:deebup_emp/apis/api_requests.dart';
 import 'package:deebup_emp/apis/config.dart';
-import 'package:deebup_emp/sign_in.dart';
+import 'package:deebup_emp/authentication/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -15,8 +14,6 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _obscureText = true;
-
-  final AuthService authService = AuthService();
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

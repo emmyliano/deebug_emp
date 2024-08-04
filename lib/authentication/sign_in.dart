@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:deebup_emp/apis/config.dart';
-import 'package:deebup_emp/forgot_password.dart';
-import 'package:deebup_emp/homepage.dart';
-import 'package:deebup_emp/register.dart';
+import 'package:deebup_emp/authentication/forgot_password.dart';
+import 'package:deebup_emp/home_screens/homepage.dart';
+import 'package:deebup_emp/authentication/register.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -28,10 +28,10 @@ class _SignInState extends State<SignIn> {
     initSharedPref();
   }
 
-  _navToHome() {
+  _navToHome(myToken) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Homepage()),
+      MaterialPageRoute(builder: (context) => Homepage(token: myToken)),
     );
   }
 
@@ -41,6 +41,7 @@ class _SignInState extends State<SignIn> {
   }
 
   Future<void> loginUser() async {
+
     if (_emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
       try {
@@ -55,20 +56,21 @@ class _SignInState extends State<SignIn> {
           body: jsonEncode(reqBody),
         );
 
-        // var jsonResponse = jsonDecode(response.body);
+        var jsonResponse = jsonDecode(response.body);
         // print("Response: ${jsonDecode(response.body)}");
 
         if (response.statusCode == 200) {
           Fluttertoast.showToast(msg: "Login successful");
-          _navToHome();
+          
 
-          // var myToken = jsonResponse['token'];
-          // if (myToken != null && prefs != null) {
-          //   await prefs!.setString('token', myToken);
-          //
-          // } else {
-          //   Fluttertoast.showToast(msg: 'Token is null or prefs not initialized');
-          // }
+          var myToken = jsonResponse['token'];
+          if (myToken != null && prefs != null) {
+            await prefs!.setString('token', myToken);
+            _navToHome(myToken);
+          
+          } else {
+            Fluttertoast.showToast(msg: 'Token is null or prefs not initialized');
+          }
         } else {
           Fluttertoast.showToast(msg: 'Invalid email or password');
         }

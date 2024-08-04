@@ -1,4 +1,3 @@
-import 'package:deebup_emp/apis/api_requests.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -10,7 +9,6 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController _emailController = TextEditingController();
-  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +123,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () async {
-                            await authService.forgotPassword(_emailController.text);
-                          },
+                          onPressed: () {},
                           style: ButtonStyle(
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(

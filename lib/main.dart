@@ -1,5 +1,5 @@
-import 'package:deebup_emp/apis/dashboard.dart';
-import 'package:deebup_emp/sign_in.dart';
+import 'package:deebup_emp/home_screens/homepage.dart';
+import 'package:deebup_emp/authentication/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Deebug Emp',
-      home: isTokenValid ? Dashboard(token: token!) : const SignIn(),
+      home: isTokenValid ? Homepage(token: token!) : const SignIn(),
     );
   }
 }
