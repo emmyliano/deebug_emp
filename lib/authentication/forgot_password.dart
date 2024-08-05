@@ -1,8 +1,10 @@
-import 'dart:convert';
 import 'package:deebup_emp/apis/config.dart';
+import 'package:deebup_emp/authentication/verify_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -14,37 +16,74 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController _emailController = TextEditingController();
 
-  Future<void> submitForgotPassword() async {
-    String email = _emailController.text.trim();
+  Future<void> forgotPassword() async {
 
-    // Validate email
-    if (!email.contains('@')) {
-      Fluttertoast.showToast(msg: 'Please enter a valid email address.');
+    if (!_emailController.text.contains('@')) {
+      Fluttertoast.showToast(msg: 'Email must contain @ symbol');
       return;
     }
 
     try {
       final response = await http.post(
-        Uri.parse(forgotPassword),
+        Uri.parse(forgot),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'email': email}),
+        body: jsonEncode({'email': _emailController.text}),
       );
 
       if (response.statusCode == 200) {
         final decodedResponse = jsonDecode(response.body);
         if (decodedResponse['status'] == 'OK') {
-          Fluttertoast.showToast(
-              msg: 'OTP sent successfully to $email');
+          showOtpSentDialog();
         } else {
           Fluttertoast.showToast(msg: decodedResponse['msg']);
         }
       } else {
-        Fluttertoast.showToast(
-            msg: 'Server error: ${response.statusCode}');
+        Fluttertoast.showToast(msg: 'Server error: ${response.statusCode}');
       }
     } catch (error) {
-      Fluttertoast.showToast(msg: 'An error occurred: $error');
+      Fluttertoast.showToast(msg: 'Oops, an error occurred');
     }
+  }
+
+  void showOtpSentDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          content: SizedBox(
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.email, color: Colors.blue, size: 50),
+                const SizedBox(height: 20),
+                const Text(
+                  'OTP sent successfully!',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const VerifyOtp()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text('Verify OTP'),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -58,7 +97,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 height: 210,
                 child: Stack(
                   children: [
-                    // First Circle
+                    //First Circle
                     Positioned(
                       top: -170,
                       left: -170,
@@ -71,6 +110,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         ),
                       ),
                     ),
+
                     // Second Circle
                     Positioned(
                       top: -180,
@@ -108,10 +148,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ],
                         ),
                       ),
-                      // White spacing
+
+                      // white spacing
                       const SizedBox(
                         height: 10,
                       ),
+
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: Material(
@@ -131,11 +173,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               ),
                               labelText: "Email address",
                               enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.white,
-                                    width: 2.0,
-                                  )),
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.white,
+                                  width: 2.0,
+                                ),
+                              ),
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   width: 12,
@@ -146,21 +189,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         ),
                       ),
+
                       const SizedBox(
                         width: 10,
                       ),
+
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: SizedBox(
                           width: double.infinity,
                           height: 55,
                           child: ElevatedButton(
-                            onPressed: submitForgotPassword,
+                            onPressed: forgotPassword,
                             style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
+                              shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                               ),
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color.fromARGB(255, 87, 92, 209),
@@ -182,7 +228,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
