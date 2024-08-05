@@ -47,10 +47,10 @@ class _SignUpState extends State<SignUp> {
     }
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       var regBody = {
-        "name": _nameController.text,
-        "email": emailController.text,
-        "number": _phoneNumberController.text,
-        "password": passwordController.text,
+        "name": _nameController.text.trim(),
+        "email": emailController.text.trim(),
+        "number": _phoneNumberController.text.trim(),
+        "password": passwordController.text.trim(),
       };
 
       try {

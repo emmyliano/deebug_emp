@@ -1,3 +1,5 @@
 const url = 'http://auth-token-rbas.onrender.com/auth/';
-final registration = "${url}signup";
-final login = "${url}login"; 
+const registration = "${url}signup";
+const login = "${url}login";
+const forgotPassword = "${url}forget-password";
+const verify = "${url}verify-otp";

@@ -29,10 +29,11 @@ class _SignInState extends State<SignIn> {
   }
 
   _navToHome(myToken) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Homepage(token: myToken)),
-    );
+    Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Homepage(token: myToken)),
+            (Route<dynamic> route) => false, // Remove all previous routes
+          );
   }
 
   Future<void> initSharedPref() async {
